@@ -10,12 +10,14 @@
 name: siwenlv-openwrt
 
 on:
-  schedule:
-    - cron: 0 20 * * *
   push:
     branches: 
       - master
- 
+  # schedule:
+  #   - cron: 0 20 * * *
+  # release:
+  #   types: [published]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -143,14 +145,21 @@ jobs:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-adbyby-plus=y
           CONFIG_PACKAGE_luci-app-aria2=y
-          CONFIG_PACKAGE_ luci-app-ssr-plus=y
           CONFIG_PACKAGE_luci-app-ddns=y
+          CONFIG_PACKAGE_luci-app-zerotier=y
           CONFIG_PACKAGE_luci-app-openclash=y
           CONFIG_PACKAGE_luci-app-passwall=y
+          CONFIG_PACKAGE_luci-app-ssr-plus=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
           CONFIG_PACKAGE_luci-app-syncdial=y
+          CONFIG_PACKAGE_luci-app-ttyd=y
+          CONFIG_PACKAGE_luci-app-v2ray-server=y
           CONFIG_PACKAGE_luci-app-turboacc=y
           CONFIG_PACKAGE_luci-app-vssr=y
-          CONFIG_PACKAGE_ luci-app-zerotier=y
+          CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-serverchan=y
           EOF
 
           # LuCI主题:
